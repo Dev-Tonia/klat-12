@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import Image from "next/image";
+import Link from "next/link";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,10 +26,62 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
-        <h1 className=" text-red-500">nav bar</h1>
+        {/* header */}
+        <header className="   absolute top-0  my-6 left-0 w-full z-10">
+          <nav className=" flex items-center p-4 justify-between max-w-7xl mx-auto">
+            <Link href={"/"}>
+              <Image
+                src="/imgs/brand-logo.png"
+                alt="Logo"
+                width={50}
+                height={50}
+                className="inline-block align-middle"
+              />
+            </Link>
+            <ul className="flex gap-8 py-4 px-10  font-dm-sans text-white bg-[#F7F9FC33] rounded-[2.5rem]">
+              <li>
+                <Link className=" font-semibold" href={"/"}>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link className=" font-semibold" href={"#"}>
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link className=" font-semibold" href={"/faqs"}>
+                  FAQs
+                </Link>
+              </li>
+              <li>
+                <Link className=" font-semibold" href={"/terms"}>
+                  Terms of Condition
+                </Link>
+              </li>
+            </ul>
+            <button className=" bg-primary text-white font-semibold rounded-[2.5rem] font-inter py-4 px-6 flex items-center justify-center">
+              Join waitlist
+            </button>
+          </nav>
+        </header>
         {children}
+        {/* footer */}
+        <footer className=" bg-gradient-to-t from-[#779BC1] via-[#9ABFDA] to-white pt-14.5 pb-18 px-10">
+          <div className="">
+            <Link href={"/"}>
+              <Image
+                src="/imgs/brand-logo.png"
+                alt="Logo"
+                width={50}
+                height={50}
+                className="inline-block align-middle"
+              />
+            </Link>
+          </div>
+        </footer>
       </body>
     </html>
   );
