@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
         {/* header */}
-        <header className="   absolute top-0  my-6 left-0 w-full z-10">
+        <header className="   absolute top-0  my-6 left-0 w-full z-10 bg-red-500">
           <nav className=" flex items-center p-4 justify-between max-w-7xl mx-auto">
             <Link href={"/"}>
               <Image
