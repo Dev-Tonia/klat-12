@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import Image from "next/image";
 import Link from "next/link";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// import "./globals.css";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { geistSans, geistMono, goodlyFont, inter, dmSans } from "../utils/font";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,11 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
+        className={`${geistSans.variable} ${geistMono.variable} ${goodlyFont.variable} ${inter.variable} ${dmSans.variable}  antialiased relative`}
       >
         {/* header */}
-        <header className="   absolute top-0  my-6 left-0 w-full z-10 bg-red-500">
-          <nav className=" flex items-center p-4 justify-between max-w-7xl mx-auto">
+        <header className="absolute top-0 left-0 w-full z-10">
+          <nav className=" flex items-center py-4 justify-between px-[clamp(1rem,5vw,112px)]">
             <Link href={"/"}>
               <Image
                 src="/imgs/brand-logo.png"
