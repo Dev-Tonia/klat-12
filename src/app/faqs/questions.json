@@ -1,0 +1,39 @@
+[
+  {
+    "category": "Personal Account",
+    "description": "Get clarity on setup, features, security, and more to help you make the most of your Klat-32 Personal Account.",
+    "items": [
+      {
+        "question": "What is a Klat-32 Personal Account?",
+        "answer": "A Personal Account on Klat-32 is designed for individuals to send and receive money, chat with other users, make payments, and manage personal transactions securely."
+      },
+      {
+        "question": "How do I create a Personal Account?",
+        "answer": "Simply sign up on the platform using your phone number or email, then follow the guided steps."
+      },
+      {
+        "question": "What can I do with my Personal Account?",
+        "answer": "You can send/receive money, make payments, and link your bank accounts for seamless transfers."
+      }
+    ]
+  },
+  {
+    "category": "Business Account",
+      "color": "blue",
+    "description": "Explore answers to help you grow and manage your business effectively on the Klat-32 platform.",
+    "items": [
+      {
+        "question": "What is a Klat-32 Business Account?",
+        "answer": "A Business Account supports merchants and service providers to list products/services, accept payments, and interact with customers via chat or call."
+      },
+      {
+        "question": "How do I register for a Business Account?",
+        "answer": "You can apply through the app or web portal by submitting your business details and documents."
+      },
+      {
+        "question": "What features are available to business users?",
+        "answer": "You can manage multiple products, track orders, accept payments, and add team members to your account."
+      }
+    ]
+  }
+]
