@@ -83,25 +83,25 @@ export default function FAQs() {
           </p>
         </div>
 
-        {/* Cloud BG */}
-        <div className="absolute inset-0 z-0">
-          {[
-            { top: "25%", left: "5%" },
-            { top: "12%", left: "30%" },
-            { top: "12%", right: "20%" },
-            { top: "18%", right: "5%" },
-          ].map((pos, i) => (
-            <Image
-              key={i}
-              src="/imgs/cloud.png"
-              alt="cloud"
-              width={290}
-              height={158}
-              className="absolute animate-cloud"
-              style={pos}
-            />
-          ))}
-        </div>
+         {/* Cloud BG */}
+               <div className="absolute inset-0 z-0">
+                 {[
+                   { top: "25%", left: "5%" },
+                   { top: "12%", left: "30%" },
+                   { top: "12%", right: "20%" },
+                   { top: "18%", right: "5%" },
+                 ].map((pos, i) => (
+                   <Image
+                     key={i}
+                     src="/imgs/cloud.png"
+                     alt="cloud"
+                     width={290}
+                     height={158}
+                     className="absolute animate-cloud w-24 h-14 sm:w-40 sm:h-24 lg:w-[290px] lg:h-[158px]"
+                     style={pos}
+                   />
+                 ))}
+               </div>
       </div>
 
       {/* FAQ Sections */}

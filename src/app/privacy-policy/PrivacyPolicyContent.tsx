@@ -53,7 +53,7 @@ export default function TermsContent() {
               alt="cloud"
               width={290}
               height={158}
-              className="absolute animate-cloud"
+              className="absolute animate-cloud w-24 h-14 sm:w-40 sm:h-24 lg:w-[290px] lg:h-[158px]"
               style={pos}
             />
           ))}
