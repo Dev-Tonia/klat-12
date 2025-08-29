@@ -1,7 +1,6 @@
 import React from "react";
-import { Search } from "lucide-react";
 import clsx from "clsx";
-
+import Image from "next/image";
 export default function MobileFrame({
   children,
   cardHeight = "h-85",
@@ -19,19 +18,24 @@ export default function MobileFrame({
         cardWidth
       )}
     >
-      <img
-        src="/imgs/mobile-frame-bg.png"
-        alt="phone"
-        className=" absolute w-full inset-0 h-60 object-cover "
-      />
+      <div className=" absolute w-full inset-0 h-60 object-cover ">
+        <Image fill src="/imgs/mobile-frame-bg.png" alt="phone" />
+      </div>
+
       <div className=" relative z-10   px-3 pt-3">
         {/* status bar */}
         <div className="  w-full flex justify-between items-center text-white text-sm font-dm-sans">
           <span className=" text-black font-bold block px-1">9:41</span>
           <span className=" flex items-center gap-1">
-            <img src="/icon/signal.svg" alt="signal" />
-            <img src="/icon/wifi.svg" alt="wifi" />
-            <img src="/icon/battery.svg" alt="battery" />
+            <div className=" relative w-[17px] h-[11px] ">
+              <Image fill src="/icon/signal.svg" alt="signal" />
+            </div>
+            <div className=" relative w-[15px] h-[11px] ">
+              <Image fill src="/icon/wifi.svg" alt="wifi" />
+            </div>
+            <div className=" relative w-[24px] h-[11px] ">
+              <Image fill src="/icon/battery.svg" alt="battery" />
+            </div>
           </span>
         </div>
         {/* content area */}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import HeroSection from "./_components/HeroSection";
 import MadeEverydayBusiness from "./_components/MadeEverydayBusiness";
 import HandlePayments from "./_components/HandlePayments";

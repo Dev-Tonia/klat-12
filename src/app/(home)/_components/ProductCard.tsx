@@ -40,7 +40,9 @@ export default function ProductCard() {
               Inquire
             </button>
             <button className="flex-1 flex items-center text-xs justify-center px-2 gap-2 rounded-full py-2 bg-[#232646] text-white font-dm-sans font-medium hover:bg-[#181a2f] transition">
-              <img src="/icon/cart.svg" alt="cart" />
+              <div className=" relative size-5 ">
+                <Image fill src="/icon/cart.svg" alt="cart" />
+              </div>
               Add to cart
             </button>
           </div>

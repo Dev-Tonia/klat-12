@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 export default function MarketplaceHeader() {
   return (
     <div className="w-full ">
@@ -8,7 +8,9 @@ export default function MarketplaceHeader() {
           Marketplace
         </h2>
         <button className="bg-primary rounded-full p-2">
-          <img src="/icon/cart.svg" alt="cart" className="w-6 h-6" />
+          <div className="w-6 h-6 relative">
+            <Image fill src="/icon/cart.svg" alt="cart" />
+          </div>
         </button>
       </div>
       <nav className="flex gap-2.5 mb-5">

@@ -43,7 +43,10 @@ export default function SendAndReceiveMoney() {
             <DownloadAppBtn />
             <div className=" grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 max-w-11/12 w-full">
               {items.map((item) => (
-                <div className=" bg-white rounded-xl py-2.5 px-5 font-goodly text-xl leading-5.5 tracking-tight font-medium">
+                <div
+                  className=" bg-white rounded-xl py-2.5 px-5 font-goodly text-xl leading-5.5 tracking-tight font-medium"
+                  key={item.id}
+                >
                   <div className=" size-10 rounded-full bg-secondary-50 flex justify-center items-center ">
                     {item.id}
                   </div>

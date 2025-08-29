@@ -1,7 +1,9 @@
 import clsx from "clsx";
 import React from "react";
+import Image from "next/image";
+
 interface ChatListItemProps {
-  avatar?: string;
+  avatar: string;
   name?: string;
   time?: string;
   message?: string;
@@ -24,9 +26,13 @@ export default function ChatListCard({
     <>
       <div className=" flex  gap-2.5 ">
         <div
-          className={clsx("  rounded-full overflow-hidden", avatarClassName)}
+          className={clsx(
+            "  rounded-full overflow-hidden relative",
+            avatarClassName
+          )}
         >
-          <img
+          <Image
+            fill
             src={avatar}
             alt="profile"
             className=" w-full h-full object-cover"

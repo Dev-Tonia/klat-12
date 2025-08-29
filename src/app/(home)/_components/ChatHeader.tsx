@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import { Search } from "lucide-react";
+import Image from "next/image";
 
 interface ChatHeaderProps {
   avatarClassName?: string;
   titleClassName?: string;
   editIconClassName?: string;
   settingsIconClassName?: string;
-  containerClassName?: string;
   searchPlaceholder?: string;
 }
 
@@ -15,7 +15,6 @@ export default function ChatHeader({
   titleClassName = " text-2xl ",
   editIconClassName = "size-10.5 ",
   settingsIconClassName = " size-10.5",
-  containerClassName = "",
 }: // placeholderClass = "Search chat...",
 ChatHeaderProps) {
   return (
@@ -24,11 +23,12 @@ ChatHeaderProps) {
         <div className=" flex items-center gap-2.5">
           <div
             className={clsx(
-              " size-8 rounded-full overflow-hidden",
+              " size-8 rounded-full overflow-hidden relative",
               avatarClassName
             )}
           >
-            <img
+            <Image
+              fill
               src="/imgs/avatar-3.jpg"
               alt="profile"
               className=" w-full h-full object-cover"
@@ -49,7 +49,9 @@ ChatHeaderProps) {
             editIconClassName
           )}
         >
-          <img src="/icon/edit.svg" alt="edit store" />
+          <div className=" relative size-6">
+            <Image fill src="/icon/edit.svg" alt="edit store" />
+          </div>
         </div>
       </div>
       {/* search and filter */}
@@ -64,7 +66,9 @@ ChatHeaderProps) {
             settingsIconClassName
           )}
         >
-          <img src="/icon/setting.svg" alt="setting store" />
+          <div className=" relative size-6">
+            <Image fill src="/icon/setting.svg" alt="setting store" />
+          </div>
         </div>
       </div>
     </>
