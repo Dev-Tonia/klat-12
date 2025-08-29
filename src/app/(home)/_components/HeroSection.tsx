@@ -37,8 +37,8 @@ export default function HeroSection() {
           { top: "12%", right: "20%" },
           { top: "18%", right: "5%" },
           //   second row
-          { top: "60%", left: "5%" },
-          { top: "55%", right: "5%" },
+          // { top: "60%", left: "5%" },
+          // { top: "55%", right: "5%" },
         ].map((pos, i) => (
           <Image
             key={i}

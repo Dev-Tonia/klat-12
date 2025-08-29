@@ -1,7 +1,10 @@
-export default function PrivacyPolicy() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <h1 className="text-4xl font-bold text-center">Privacy Policy</h1>
-    </div>
-  );
+import PrivacyPolicyContent from "./PrivacyPolicyContent";
+
+export const metadata = {
+  title: "Privacy Policy",
+  description: "Klat-32 Privacy Policy page",
+};
+
+export default function PrivacyPolicyPage() {
+  return <PrivacyPolicyContent />;
 }
