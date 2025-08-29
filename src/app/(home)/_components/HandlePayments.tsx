@@ -6,7 +6,7 @@ import GradientCardHeading from "./GradientCardHeading";
 export default function HandlePayments() {
   return (
     <section className=" py-25 px-[clamp(1rem,5vw,112px)]">
-      <GradientCard>
+      <GradientCard className=" bg-[linear-gradient(179.54deg,#CBDFEC_-3.44%,#9ABFDA_45.36%,#779BC1_89.47%)]">
         <div className=" flex gap-20 py-10 px-9 items-center ">
           <div className="relative w-4/12 ">
             <Image
