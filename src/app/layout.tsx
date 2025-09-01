@@ -60,15 +60,13 @@ export default function RootLayout({
         </header>
         {children}
         {/* newsletter */}
-        <section className="w-full flex flex-col items-center py-14">
-          <h2 className="text-2xl font-bold  text-center mb-2">
+        <section className="w-full flex flex-col font-inter items-center py-14 ">
+          <h2 className="text-2xl font-bold text-gray-800 tracking-tighter  text-center mb-2">
             Subscribe to our newsletter
           </h2>
-          <p className="text-gray-500 text-center mb-6 max-w-md">
-            Never miss a beat.
-            <br />
-            Get a weekly dose of design inspiration, secrets, tips, trends, and
-            banter in your inbox.
+          <p className="text-gray-500 max-w-[300px] text-center mb-6 ">
+            Never miss a beat. Get a weekly dose of design inspiration, secrets,
+            tips, trends, and banter in your inbox.
           </p>
           <form className="flex gap-2 w-full max-w-md">
             <div className="flex items-center border border-gray-200 rounded-lg px-4 py-2 bg-white flex-1">
