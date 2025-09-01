@@ -13,6 +13,11 @@
 
   /* custom class goes here */
   --color-primary: #1a1e42;
+  --color-secondary: #f8fafc;
+  --color-secondary-50: #e3effc;
+  --color-disabled: #b2b2b2;
+  --color-ink-darkest: #090a0a;
+  --color-ink-light: #6c7072;
 
   --font-inter: var(--font-inter);
   --font-dm-sans: var(--font-dm-sans);
