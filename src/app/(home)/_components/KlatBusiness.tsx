@@ -16,7 +16,7 @@ const items = [
 ];
 export default function KlatBusiness() {
   return (
-    <section className=" py-25 px-[clamp(1rem,5vw,112px)]">
+    <section className=" py-25    px-[clamp(0.5rem,5vw,112px)]  md:px-[clamp(1rem,5vw,112px)] hidden md:block">
       <GradientCard className=" bg-[linear-gradient(179.54deg,#CBDFEC_-3.44%,#9ABFDA_45.36%,#779BC1_89.47%)]">
         <div className=" flex gap-20 pt-10 px-9 items-center ">
           <div className=" pb-10 w-8/12">

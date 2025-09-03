@@ -9,7 +9,12 @@ export default function GradientCard({
   className?: string;
 }) {
   return (
-    <div className={clsx(" rounded-[1.25rem] pt-7 px-8.5", className)}>
+    <div
+      className={clsx(
+        " rounded-[1.25rem] pt-7  px-5 md:px-7 lg:px-8.5",
+        className
+      )}
+    >
       {children}
     </div>
   );

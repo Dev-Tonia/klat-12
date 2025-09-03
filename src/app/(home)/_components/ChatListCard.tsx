@@ -18,7 +18,7 @@ export default function ChatListCard({
   time,
   message,
   subMessage,
-  avatarClassName = "size-10",
+  avatarClassName = " size-7 sm:size-8 md:size-9 lg:size-10",
   nameClassName = "",
   timeClassName = "text-sm ",
 }: ChatListItemProps) {
@@ -45,11 +45,26 @@ export default function ChatListCard({
           )}
         >
           <div className=" flex justify-between items-center">
-            <p className=" ">{name}</p>
-            <span className={clsx(" text-sm ", timeClassName)}>{time}</span>
+            <p className=" text-[10px] sm:text-xs md:text-sm lg:text-base">
+              {name}
+            </p>
+            <span
+              className={clsx(
+                " text-[10px] sm:text-xs lg:text-sm ",
+                timeClassName
+              )}
+            >
+              {time}
+            </span>
           </div>
-          <p className="  font-bold mt-2">{message}</p>
-          <p className=" text-ink-light leading-4 mt-1">{subMessage}</p>
+          <p className=" text-[10px] sm:text-xs md:text-sm lg:text-base  font-bold mt-2">
+            {message}
+          </p>
+          {subMessage && (
+            <p className=" text-[10px] sm:text-xs md:text-sm lg:text-base text-ink-light leading-4 mt-1">
+              {subMessage}
+            </p>
+          )}
         </div>
       </div>
     </>
