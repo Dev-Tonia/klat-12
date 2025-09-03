@@ -1,0 +1,62 @@
+[
+  {
+    "id": "mtn",
+    "name": "MTN Nigeria",
+    "logo": "/src/assets/mtn.png"
+  },
+  {
+    "id": "glo",
+    "name": "Glo Mobile",
+    "logo": "/src/assets/glo.png"
+  },
+  {
+    "id": "airtel",
+    "name": "Airtel Nigeria",
+    "logo": "/src/assets/airtel.png"
+  },
+  {
+    "id": "9mobile",
+    "name": "9mobile",
+    "logo": "/src/assets/9mobile.png"
+  },
+  {
+    "id": "dstv",
+    "name": "DSTV",
+    "logo": "/src/assets/dstv.png"
+  },
+  {
+    "id": "gotv",
+    "name": "GOTV",
+    "logo": "/src/assets/gotv.png"
+  },
+  {
+    "id": "startimes",
+    "name": "Startimes",
+    "logo": "/src/assets/startimes.png"
+  },
+  {
+    "id": "phed",
+    "name": "PHED",
+    "logo": "/src/assets/phed.png"
+  },
+  {
+    "id": "ikeja-electric",
+    "name": "Ikeja Electric",
+    "logo": "/src/assets/ikeja.png"
+  },
+  {
+    "id": "eko-electric",
+    "name": "Eko Electric",
+    "logo": "/src/assets/ekedc.png"
+  },
+  {
+    "id": "abuja-electric",
+    "name": "Abuja Electric",
+    "logo": "/src/assets/abjelectricity.png"
+  },
+  {
+    "id": "kaduna-electric",
+    "name": "Kaduna Electric",
+    "logo": "/src/assets/kaduna.png"
+  }
+]
