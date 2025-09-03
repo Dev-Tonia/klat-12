@@ -6,6 +6,7 @@ import { geistSans, geistMono, goodlyFont, inter, dmSans } from "../utils/font";
 import ClientHeader from "@/components/ClientHeader";
 import "./globals.css";
 import Header from "@/components/Header";
+import { CartProvider } from "@/contexts/CartContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,122 +23,127 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${goodlyFont.variable} ${inter.variable} ${dmSans.variable}  antialiased relative`}
       >
-        {/* header */}
+        <CartProvider>
+          {/* header */}
 
-        <Header />
-        {/* <ClientHeader /> */}
-        {children}
+          <Header />
+          {/* <ClientHeader /> */}
+          {children}
 
-        {/* newsletter */}
-        <section className="w-full flex flex-col font-inter items-center py-8 md:py-14 px-4 md:px-6">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 tracking-tighter text-center mb-2 md:mb-3">
-            Subscribe to our newsletter
-          </h2>
-          <p className="text-sm md:text-base text-gray-500 max-w-[280px] md:max-w-[350px] lg:max-w-[400px] text-center mb-6 md:mb-8">
-            Never miss a beat. Get a weekly dose of design inspiration, secrets,
-            tips, trends, and banter in your inbox.
-          </p>
-          <form className="flex flex-col sm:flex-row gap-3 sm:gap-2 w-full max-w-sm sm:max-w-md lg:max-w-lg">
-            <div className="flex items-center border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 bg-white flex-1">
-              <Mail className="w-4 h-4 md:w-5 md:h-5 text-gray-400 mr-2" />
-              <input
-                type="email"
-                placeholder="Email address"
-                className="outline-none border-none bg-transparent flex-1 text-gray-700 text-sm md:text-base"
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-primary text-white font-semibold rounded-lg px-4 md:px-6 py-2 md:py-3 text-sm md:text-base transition hover:bg-primary/90 whitespace-nowrap"
-            >
-              Subscribe
-            </button>
-          </form>
-        </section>
+          {/* newsletter */}
+          <section className="w-full flex flex-col font-inter items-center py-8 md:py-14 px-4 md:px-6">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 tracking-tighter text-center mb-2 md:mb-3">
+              Subscribe to our newsletter
+            </h2>
+            <p className="text-sm md:text-base text-gray-500 max-w-[280px] md:max-w-[350px] lg:max-w-[400px] text-center mb-6 md:mb-8">
+              Never miss a beat. Get a weekly dose of design inspiration,
+              secrets, tips, trends, and banter in your inbox.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-3 sm:gap-2 w-full max-w-sm sm:max-w-md lg:max-w-lg">
+              <div className="flex items-center border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 bg-white flex-1">
+                <Mail className="w-4 h-4 md:w-5 md:h-5 text-gray-400 mr-2" />
+                <input
+                  type="email"
+                  placeholder="Email address"
+                  className="outline-none border-none bg-transparent flex-1 text-gray-700 text-sm md:text-base"
+                />
+              </div>
+              <button
+                type="submit"
+                className="bg-primary text-white font-semibold rounded-lg px-4 md:px-6 py-2 md:py-3 text-sm md:text-base transition hover:bg-primary/90 whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          </section>
 
-        {/* footer */}
-        <footer className="bg-gray-50 py-12">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="col-span-1 md:col-span-2">
-                <div className="flex items-center mb-4">
-                  <Image
-                    src="/imgs/brand-logo.png"
-                    alt="Logo"
-                    width={40}
-                    height={40}
-                    className="mr-3"
-                  />
-                  <span className="text-xl font-bold text-gray-800">
-                    KLAT-32
-                  </span>
+          {/* footer */}
+          <footer className="bg-gradient-to-t from-[#779BC1] via-[#9ABFDA] to-white pt-10 pb-8 px-10">
+            <div className="max-w-7xl mx-auto w-full flex flex-col gap-6">
+              {/* Top Row */}
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                {/* Logo */}
+                <div>
+                  <Link href="/">
+                    <Image
+                      src="/imgs/brand-logo.png"
+                      alt="Logo"
+                      width={40}
+                      height={40}
+                      className="inline-block align-middle"
+                    />
+                  </Link>
                 </div>
-                <p className="text-gray-600 mb-4 max-w-md">
-                  The all-in-one platform for messaging, payments, and business
-                  growth.
-                </p>
-                <div className="flex items-center">
-                  <span className="text-sm text-gray-500 mr-2">
-                    Contact us:
-                  </span>
-                  <a
-                    href="mailto:hello@klat32.com"
-                    className="font-semibold hover:underline text-primary"
-                  >
-                    hello@klat32.com
-                  </a>
+                {/* Contact & Social */}
+                <div className="flex flex-col text-white md:flex-row md:items-center gap-4 md:gap-8">
+                  <div className="text-sm  font-dm-sans">
+                    Contact us:{" "}
+                    <a
+                      href="mailto:hello@klat32.com"
+                      className="font-semibold hover:underline text-primary"
+                    >
+                      hello@klat32.com
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm  font-dm-sans">Follow Us</span>
+                    <a
+                      href="#"
+                      aria-label="Facebook"
+                      className="size-10 rounded-full bg-white/20 flex items-center justify-center"
+                    >
+                      <div className=" relative size-5">
+                        <Image fill src="/icon/facebook.svg" alt="facebook" />
+                      </div>
+                    </a>
+                    <a
+                      href="#"
+                      aria-label="Twitter"
+                      className="size-10 rounded-full bg-white/20 flex items-center justify-center"
+                    >
+                      <span className=" relative size-5">
+                        <Image fill src="/icon/twitter.svg" alt="twitter" />
+                      </span>
+                    </a>
+                    <a
+                      href="#"
+                      aria-label="Instagram"
+                      className="size-10 rounded-full bg-white/20 flex items-center justify-center"
+                    >
+                      <span className=" relative size-5">
+                        <Image fill src="/icon/instagram.svg" alt="instagram" />
+                      </span>
+                    </a>
+                    <a
+                      href="#"
+                      aria-label="LinkedIn"
+                      className="size-10 rounded-full bg-white/20 flex items-center justify-center"
+                    >
+                      <span className=" relative size-5">
+                        <Image fill src="/icon/linkedin.svg" alt="linkedin" />
+                      </span>
+                    </a>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-sm  font-dm-sans">Follow Us</span>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-primary transition-colors"
-                  >
-                    <Image
-                      src="/icon/facebook.svg"
-                      alt="Facebook"
-                      width={20}
-                      height={20}
-                    />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-primary transition-colors"
-                  >
-                    <Image
-                      src="/icon/twitter.svg"
-                      alt="Twitter"
-                      width={20}
-                      height={20}
-                    />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-primary transition-colors"
-                  >
-                    <Image
-                      src="/icon/instagram.svg"
-                      alt="Instagram"
-                      width={20}
-                      height={20}
-                    />
-                  </a>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-primary transition-colors"
-                  >
-                    <Image
-                      src="/icon/linkedin.svg"
-                      alt="LinkedIn"
-                      width={20}
-                      height={20}
-                    />
-                  </a>
+              </div>
+              {/* Bottom Row */}
+              <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center mt-2">
+                <div className="flex gap-8 text-white text-sm font-dm-sans">
+                  <Link href="/privacy-policy" className="hover:underline">
+                    Privacy Policy
+                  </Link>
+                  <Link href="/terms" className="hover:underline">
+                    Terms of Use
+                  </Link>
+                </div>
+                {/* Copyright */}
+                <div className="text-xs text-white font-dm-sans text-right">
+                  © 2023. Powered by Klat-32. All Rights Reserved.
                 </div>
               </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </CartProvider>
       </body>
     </html>
   );

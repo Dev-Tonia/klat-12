@@ -1,13 +1,19 @@
+"use client";
 import React from "react";
 import Image from "next/image";
+import { useCart } from "@/contexts/CartContext";
 export default function MarketplaceHeader() {
+  const { getTotalItems } = useCart();
   return (
     <div className="w-full ">
       <div className="flex items-center mb-9 justify-between">
         <h2 className="text-2xl font-bold font-dm-sans text-black leading-6 tracking-tighter  ">
           Marketplace
         </h2>
-        <button className="bg-primary rounded-full p-2">
+        <button className="bg-primary rounded-full relative w-fit p-2">
+          <span className="absolute -top-1 -right-1 bg-white text-primary text-[8px] font-semibold rounded-full w-4 h-4 flex items-center justify-center">
+            {getTotalItems()}
+          </span>
           <div className="w-6 h-6 relative">
             <Image fill src="/icon/cart.svg" alt="cart" />
           </div>

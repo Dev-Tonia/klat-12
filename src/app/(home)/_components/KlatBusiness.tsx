@@ -5,7 +5,13 @@ import GradientCardHeading from "./GradientCardHeading";
 import MobileFrame from "./MobileFrame";
 import ProductCard from "./ProductCard";
 import MarketplaceHeader from "./MarketplaceHeader";
-
+interface Product {
+  name: string;
+  description: string;
+  price: string;
+  image: string;
+  status: "In Stock" | "Out Stock";
+}
 const items = [
   "Receive Payments from Customers Instantly",
   "Daily Business Account Access",
@@ -13,6 +19,36 @@ const items = [
   "List Your Products & Services for Instant Orders",
   "API & Business Integrations – Tailored for growth",
   "Manage Customers, Vendors, and Team Communication",
+];
+const products: Product[] = [
+  {
+    name: "Wireless Bluetooth Earbuds",
+    description: "High-quality wireless earbuds with noise cancellation.",
+    price: "₦15,000",
+    image: "/imgs/earbud.png",
+    status: "In Stock",
+  },
+  {
+    name: "Bluetooth Speaker",
+    description: "A portable Bluetooth speaker with deep bass.",
+    price: "₦12,000",
+    image: "/imgs/speaker.png",
+    status: "Out Stock",
+  },
+  {
+    name: "USB-C Cable",
+    description: "Fast charging USB-C cable.",
+    price: "₦3,000",
+    image: "/imgs/usb-cable.png",
+    status: "In Stock",
+  },
+  {
+    name: "Smartphone Stand",
+    description: "Adjustable stand for smartphones and tablets.",
+    price: "₦5,000",
+    image: "/imgs/phone-stand.png",
+    status: "In Stock",
+  },
 ];
 export default function KlatBusiness() {
   return (
@@ -47,12 +83,12 @@ export default function KlatBusiness() {
             </ul>
           </div>
           <div className=" w-4/12 shrink-0 ">
-            <MobileFrame cardHeight="h-160">
+            <MobileFrame cardHeight="h-160 overflow-y-auto hide-scrollbar">
               <MarketplaceHeader />
               <div className=" space-y-3">
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                {products.map((product) => (
+                  <ProductCard key={product.name} product={product} />
+                ))}
               </div>
             </MobileFrame>
           </div>
