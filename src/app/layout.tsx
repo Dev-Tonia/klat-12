@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Mail } from "lucide-react";
 import { geistSans, geistMono, goodlyFont, inter, dmSans } from "../utils/font";
-import ClientHeader from "../components/ClientHeader";
+import ClientHeader from "@/components/ClientHeader";
 import "./globals.css";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,36 +22,39 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${goodlyFont.variable} ${inter.variable} ${dmSans.variable}  antialiased relative`}
       >
-        <ClientHeader />
+        {/* header */}
+
+        <Header />
+        {/* <ClientHeader /> */}
         {children}
-        
+
         {/* newsletter */}
-        <section className="w-full flex flex-col font-inter items-center py-14 ">
-          <h2 className="text-2xl font-bold text-gray-800 tracking-tighter  text-center mb-2">
+        <section className="w-full flex flex-col font-inter items-center py-8 md:py-14 px-4 md:px-6">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 tracking-tighter text-center mb-2 md:mb-3">
             Subscribe to our newsletter
           </h2>
-          <p className="text-gray-500 max-w-[300px] text-center mb-6 ">
+          <p className="text-sm md:text-base text-gray-500 max-w-[280px] md:max-w-[350px] lg:max-w-[400px] text-center mb-6 md:mb-8">
             Never miss a beat. Get a weekly dose of design inspiration, secrets,
             tips, trends, and banter in your inbox.
           </p>
-          <form className="flex gap-2 w-full max-w-md">
-            <div className="flex items-center border border-gray-200 rounded-lg px-4 py-2 bg-white flex-1">
-              <Mail className="w-5 h-5 text-gray-400 mr-2" />
+          <form className="flex flex-col sm:flex-row gap-3 sm:gap-2 w-full max-w-sm sm:max-w-md lg:max-w-lg">
+            <div className="flex items-center border border-gray-200 rounded-lg px-3 md:px-4 py-2 md:py-3 bg-white flex-1">
+              <Mail className="w-4 h-4 md:w-5 md:h-5 text-gray-400 mr-2" />
               <input
                 type="email"
                 placeholder="Email address"
-                className="outline-none border-none bg-transparent flex-1 text-gray-700 text-sm"
+                className="outline-none border-none bg-transparent flex-1 text-gray-700 text-sm md:text-base"
               />
             </div>
             <button
               type="submit"
-              className="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors"
+              className="bg-primary text-white font-semibold rounded-lg px-4 md:px-6 py-2 md:py-3 text-sm md:text-base transition hover:bg-primary/90 whitespace-nowrap"
             >
               Subscribe
             </button>
           </form>
         </section>
-        
+
         {/* footer */}
         <footer className="bg-gray-50 py-12">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,13 +68,18 @@ export default function RootLayout({
                     height={40}
                     className="mr-3"
                   />
-                  <span className="text-xl font-bold text-gray-800">KLAT-32</span>
+                  <span className="text-xl font-bold text-gray-800">
+                    KLAT-32
+                  </span>
                 </div>
                 <p className="text-gray-600 mb-4 max-w-md">
-                  The all-in-one platform for messaging, payments, and business growth.
+                  The all-in-one platform for messaging, payments, and business
+                  growth.
                 </p>
                 <div className="flex items-center">
-                  <span className="text-sm text-gray-500 mr-2">Contact us:</span>
+                  <span className="text-sm text-gray-500 mr-2">
+                    Contact us:
+                  </span>
                   <a
                     href="mailto:hello@klat32.com"
                     className="font-semibold hover:underline text-primary"
@@ -83,25 +93,45 @@ export default function RootLayout({
                     href="#"
                     className="text-gray-400 hover:text-primary transition-colors"
                   >
-                    <Image src="/icon/facebook.svg" alt="Facebook" width={20} height={20} />
+                    <Image
+                      src="/icon/facebook.svg"
+                      alt="Facebook"
+                      width={20}
+                      height={20}
+                    />
                   </a>
                   <a
                     href="#"
                     className="text-gray-400 hover:text-primary transition-colors"
                   >
-                    <Image src="/icon/twitter.svg" alt="Twitter" width={20} height={20} />
+                    <Image
+                      src="/icon/twitter.svg"
+                      alt="Twitter"
+                      width={20}
+                      height={20}
+                    />
                   </a>
                   <a
                     href="#"
                     className="text-gray-400 hover:text-primary transition-colors"
                   >
-                    <Image src="/icon/instagram.svg" alt="Instagram" width={20} height={20} />
+                    <Image
+                      src="/icon/instagram.svg"
+                      alt="Instagram"
+                      width={20}
+                      height={20}
+                    />
                   </a>
                   <a
                     href="#"
                     className="text-gray-400 hover:text-primary transition-colors"
                   >
-                    <Image src="/icon/linkedin.svg" alt="LinkedIn" width={20} height={20} />
+                    <Image
+                      src="/icon/linkedin.svg"
+                      alt="LinkedIn"
+                      width={20}
+                      height={20}
+                    />
                   </a>
                 </div>
               </div>

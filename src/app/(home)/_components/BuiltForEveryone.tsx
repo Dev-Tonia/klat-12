@@ -8,7 +8,7 @@ import ChatHeader from "./ChatHeader";
 import GradientCard from "./GradientCard";
 export default function BuiltForEveryone() {
   return (
-    <section className=" bg-white px-[clamp(1rem,5vw,112px)] pt-15.5  ">
+    <section className=" bg-white    px-[clamp(0.5rem,5vw,112px)]  md:px-[clamp(1rem,5vw,112px)] sm:pt-10 pt-8 md:pt-13 lg:pt-15.5  ">
       <div className=" px-10">
         {/* header */}
         <SectionHeader
@@ -16,11 +16,11 @@ export default function BuiltForEveryone() {
           title="Built for Everyone. Designed Around You."
           desc="Whether you're running a business or handling personal payments, KLAT-32 gives you the tools to transact smarter, faster, and with more freedom."
         />
-        <div className=" grid gap-4 items-stretch min-h-80 grid-cols-3 mt-12.5">
-          <div className=" col-span-2 relative  rounded-[1.25rem] pt-7 px-8.5  bg-gradient-to-b from-[#779BC1] via-[#9ABFDA] to-[#CBDFEC] overflow-hidden">
+        <div className=" grid gap-4 items-stretch min-h-80 lg:grid-cols-3 mt-12.5">
+          <div className=" lg:col-span-2 relative  rounded-[1.25rem] pt-7 px-5 md:px-7 lg:px-8.5  bg-gradient-to-b from-[#779BC1] via-[#9ABFDA] to-[#CBDFEC] overflow-hidden">
             <div className=" relative z-10 ">
-              <div className=" flex justify-between gap-4">
-                <div className=" max-w-[550px]">
+              <div className=" flex flex-col md:flex-row justify-between gap-4">
+                <div className=" md:max-w-[550px]">
                   <div className=" flex flex-col h-full justify-between gap-6 pb-8">
                     {/* heading */}
                     <div className="">
@@ -33,7 +33,7 @@ export default function BuiltForEveryone() {
                           />
                         </div>
                       </div>
-                      <h3 className=" font-semibold text-4xl mt-8 tracking-tight font-goodly">
+                      <h3 className=" font-semibold text-2xl sm:text-3xl lg:text-[2.5rem] mt-8 tracking-tight font-goodly">
                         For Businesses
                       </h3>
                     </div>
@@ -49,7 +49,7 @@ export default function BuiltForEveryone() {
                 </div>
 
                 {/* mobile frame */}
-                <div className="flex-shrink-0  w-80 ">
+                <div className="flex-shrink-  w-full max-w-80  mx-auto md:mx-0 ">
                   <MobileFrame cardHeight="h-100">
                     <ChatHeader />
                     {/* chat list */}
@@ -83,10 +83,10 @@ export default function BuiltForEveryone() {
             {/* Cloud Background */}
             <div className="absolute inset-0 z-0">
               {[
-                { top: "25%", left: "5%" },
-                { top: "12%", left: "30%" },
-                { top: "12%", right: "20%" },
-                { top: "18%", right: "5%" },
+                "top-[25%] left-[5%] ",
+                "top-[12%] left-[30%] hidden md:block",
+                "top-[12%] right-[20%] hidden md:block",
+                "top-[18%] md:right-[5%]  -right-[15%]",
               ].map((pos, i) => (
                 <Image
                   key={i}
@@ -94,13 +94,12 @@ export default function BuiltForEveryone() {
                   alt="cloud"
                   width={230}
                   height={158}
-                  className="absolute  animate-cloud"
-                  style={pos}
+                  className={`absolute animate-cloud ${pos}`}
                 />
               ))}
             </div>
           </div>
-          <div className=" h-full col-span-1">
+          <div className=" h-full lg:col-span-1">
             <GradientCard className="  bg-gradient-to-b from-[#779BC1] via-[#9ABFDA] to-[#CBDFEC] h-full">
               <div className=" flex flex-col h-full justify-between gap-6 pb-8">
                 {/* heading */}
@@ -110,7 +109,7 @@ export default function BuiltForEveryone() {
                       <Image fill src="/icon/arrow-up.svg" alt="app store" />
                     </div>
                   </div>
-                  <h3 className=" font-semibold text-4xl mt-8 text-white tracking-tight font-goodly">
+                  <h3 className=" font-semibold text-2xl sm:text-3xl lg:text-[2.5rem] mt-8 text-white tracking-tight font-goodly">
                     For Individuals
                   </h3>
                 </div>

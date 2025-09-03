@@ -26,10 +26,10 @@ const items = [
 
 export default function SendAndReceiveMoney() {
   return (
-    <section className=" py-25 px-[clamp(1rem,5vw,112px)]">
-      <GradientCard className=" bg-[linear-gradient(179.54deg,#CBDFEC_-3.44%,#9ABFDA_45.36%,#779BC1_89.47%)] pb-22 pt-35">
-        <div className=" flex gap-20 pt-10 px-9 items-center ">
-          <div className=" w-[60%]">
+    <section className="  py-12 sm:py-16 md:py-20 lg:py-25    px-[clamp(0.5rem,5vw,112px)]  md:px-[clamp(1rem,5vw,112px)]">
+      <GradientCard className=" bg-[linear-gradient(179.54deg,#CBDFEC_-3.44%,#9ABFDA_45.36%,#779BC1_89.47%)] min-[800px]:pb-16 pb-0 lg:pb-22 sm:pt-16 pt-10 md:pt-20 min-[800px]:pt-29 lg:pt-35">
+        <div className=" flex-col min-[800px]:flex-row flex gap-20 pt-10 px-9 items-center ">
+          <div className=" min-[800px]:w-[60%]">
             <div className=" my-5 border border-white bg-white/30 w-fit rounded-2xl text-primary py-1 px-3 font-dm-sans text-sm font-medium">
               How it works
             </div>
@@ -56,8 +56,8 @@ export default function SendAndReceiveMoney() {
               ))}
             </div>
           </div>
-          <div className=" bg-white rounded-2xl pt-10 px-15 w-[40%] ">
-            <MobileFrame cardHeight="h-full">
+          <div className=" min-[800px]:bg-white w-full  min-[800px]:rounded-2xl min-[800px]:pt-10 xl:px-15 min-[800px]:w-[40%] ">
+            <MobileFrame cardHeight="h-full " cardWidth=" max-w-100 mx-auto">
               <ChatHeader
                 avatarClassName="size-6.5"
                 titleClassName=" text-lg"

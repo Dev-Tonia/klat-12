@@ -51,7 +51,7 @@ export default function ClientHeader() {
               </Link>
             </li>
           </ul>
-          <button 
+          <button
             onClick={handleJoinWaitlist}
             className=" bg-primary text-white font-semibold rounded-[2.5rem] font-inter py-4 px-6 flex items-center justify-center hover:bg-primary/90 transition-colors"
           >
@@ -59,7 +59,7 @@ export default function ClientHeader() {
           </button>
         </nav>
       </header>
-      
+
       {/* Join Waitlist Modal */}
       <JoinWaitlistModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </>

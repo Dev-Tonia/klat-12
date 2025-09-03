@@ -4,7 +4,7 @@ import React from "react";
 export default function SectionHeader({
   title,
   desc,
-  className = "max-w-xl",
+  className = " max-w-xs md:max-w-xl",
 }: {
   title: string;
   desc: string;
@@ -17,10 +17,10 @@ export default function SectionHeader({
         className
       )}
     >
-      <h2 className=" font-goodly font-semibold text-6xl leading-16">
+      <h2 className=" font-goodly font-semibold text-4xl sm:text-5xl lg:text-6xl leading-13 md:leading-16">
         {title}
       </h2>
-      <p className=" font-dm-sans text-xl px-9 ">{desc}</p>
+      <p className=" font-dm-sans sm:text-lg lg:text-xl px-9 ">{desc}</p>
     </div>
   );
 }
