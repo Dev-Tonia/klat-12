@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
 import Toast from "./Toast";
@@ -18,7 +18,6 @@ const countries = [
   { code: "+49", name: "Germany", flag: "🇩🇪" },
 ];
 
-// Regular expressions for validation
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const PHONE_REGEX = /^[0-9]{7,15}$/;
 
@@ -35,7 +34,6 @@ export default function JoinWaitlistModal({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({ phoneNumber: "", email: "" });
 
-  // ✅ Toast state
   const [toast, setToast] = useState<{
     message: string;
     type: "success" | "error";
@@ -89,11 +87,12 @@ export default function JoinWaitlistModal({
         email: "",
       });
       onClose();
-    } catch (error: any) {
-      setToast({
-        message: error.message || "Failed to join waitlist",
-        type: "error",
-      });
+    } catch (error: unknown) {
+      let message = "Failed to join waitlist";
+      if (error instanceof Error) {
+        message = error.message;
+      }
+      setToast({ message, type: "error" });
     } finally {
       setIsSubmitting(false);
     }

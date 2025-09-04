@@ -37,10 +37,11 @@ export async function POST(request: Request) {
       { success: true, subscription: data?.[0] },
       { status: 201 }
     );
-  } catch (err: any) {
-    return NextResponse.json(
-      { error: err?.message ?? "Unknown error" },
-      { status: 500 }
-    );
+  } catch (err: unknown) {
+    let message = "Unknown error";
+    if (err instanceof Error) {
+      message = err.message;
+    }
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

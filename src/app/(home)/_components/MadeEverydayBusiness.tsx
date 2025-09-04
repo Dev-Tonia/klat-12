@@ -5,7 +5,6 @@ import GradientCardHeading from "./GradientCardHeading";
 import ChatHeader from "./ChatHeader";
 import ChatListCard from "./ChatListCard";
 import SectionHeader from "./SectionHeader";
-import { Wallet } from "lucide-react";
 import WalletHeader from "./WalletHeader";
 
 export default function MadeEverydayBusiness() {

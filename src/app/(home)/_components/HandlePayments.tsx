@@ -21,66 +21,18 @@ import kadunaLogo from "../../../assets/kaduna.png";
 
 // Services data with imported logos
 const services = [
-  {
-    id: "mtn",
-    name: "MTN Nigeria",
-    logo: mtnLogo,
-  },
-  {
-    id: "glo",
-    name: "Glo Mobile",
-    logo: gloLogo,
-  },
-  {
-    id: "airtel",
-    name: "Airtel Nigeria",
-    logo: airtelLogo,
-  },
-  {
-    id: "9mobile",
-    name: "9mobile",
-    logo: nineMobileLogo,
-  },
-  {
-    id: "dstv",
-    name: "DSTV",
-    logo: dstvLogo,
-  },
-  {
-    id: "gotv",
-    name: "GOTV",
-    logo: gotvLogo,
-  },
-  {
-    id: "startimes",
-    name: "Startimes",
-    logo: startimesLogo,
-  },
-  {
-    id: "phed",
-    name: "PHED",
-    logo: phedLogo,
-  },
-  {
-    id: "ikeja-electric",
-    name: "Ikeja Electric",
-    logo: ikejaLogo,
-  },
-  {
-    id: "eko-electric",
-    name: "Eko Electric",
-    logo: ekedcLogo,
-  },
-  {
-    id: "abuja-electric",
-    name: "Abuja Electric",
-    logo: abjElectricityLogo,
-  },
-  {
-    id: "kaduna-electric",
-    name: "Kaduna Electric",
-    logo: kadunaLogo,
-  },
+  { id: "mtn", name: "MTN Nigeria", logo: mtnLogo },
+  { id: "glo", name: "Glo Mobile", logo: gloLogo },
+  { id: "airtel", name: "Airtel Nigeria", logo: airtelLogo },
+  { id: "9mobile", name: "9mobile", logo: nineMobileLogo },
+  { id: "dstv", name: "DSTV", logo: dstvLogo },
+  { id: "gotv", name: "GOTV", logo: gotvLogo },
+  { id: "startimes", name: "Startimes", logo: startimesLogo },
+  { id: "phed", name: "PHED", logo: phedLogo },
+  { id: "ikeja-electric", name: "Ikeja Electric", logo: ikejaLogo },
+  { id: "eko-electric", name: "Eko Electric", logo: ekedcLogo },
+  { id: "abuja-electric", name: "Abuja Electric", logo: abjElectricityLogo },
+  { id: "kaduna-electric", name: "Kaduna Electric", logo: kadunaLogo },
 ];
 
 export default function HandlePayments() {
@@ -89,6 +41,10 @@ export default function HandlePayments() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const target = sectionRef.current; // copy ref here
+
+    if (!target) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated) {
@@ -97,58 +53,53 @@ export default function HandlePayments() {
         }
       },
       {
-        threshold: 0.3, // Trigger when 30% of the section is visible
-        rootMargin: "0px 0px -100px 0px", // Start animation slightly before fully visible
+        threshold: 0.3,
+        rootMargin: "0px 0px -100px 0px",
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    observer.observe(target);
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      observer.unobserve(target);
     };
   }, [hasAnimated]);
 
   return (
-    <section className=" py-25    px-[clamp(0.5rem,5vw,112px)]  md:px-[clamp(1rem,5vw,112px)] hidden md:block">
-      <section ref={sectionRef} className=" py-25 px-[clamp(1rem,5vw,112px)]">
-        <GradientCard className=" bg-[linear-gradient(179.54deg,#CBDFEC_-3.44%,#9ABFDA_45.36%,#779BC1_89.47%)]">
-          <div className=" flex gap-20 py-10 px-9 items-center ">
-            <div className="relative w-4/12 ">
+    <section className="py-25 px-[clamp(0.5rem,5vw,112px)] md:px-[clamp(1rem,5vw,112px)] hidden md:block">
+      <section ref={sectionRef} className="py-25 px-[clamp(1rem,5vw,112px)]">
+        <GradientCard className="bg-[linear-gradient(179.54deg,#CBDFEC_-3.44%,#9ABFDA_45.36%,#779BC1_89.47%)]">
+          <div className="flex gap-20 py-10 px-9 items-center">
+            <div className="relative w-4/12">
               <Image
                 src="/imgs/app.png"
                 alt="phone"
                 height={600}
                 width={330}
-                className=" border-[10px] border-primary rounded-[2.5rem]  w-fit object-contain"
+                className="border-[10px] border-primary rounded-[2.5rem] w-fit object-contain"
               />
             </div>
-            <div className=" w-8/12">
-              <div className=" size-14 bg-primary rounded-full flex justify-center items-center">
+            <div className="w-8/12">
+              <div className="size-14 bg-primary rounded-full flex justify-center items-center">
                 <Image
                   src="/imgs/roboto.gif"
                   alt="klat-32"
                   height={40}
                   width={40}
-                  className=" object-contain"
+                  className="object-contain"
                 />
               </div>
-              <div className=" my-5 border border-white bg-white/30 w-fit rounded-2xl text-primary py-1 px-3 font-dm-sans text-sm font-medium">
+              <div className="my-5 border border-white bg-white/30 w-fit rounded-2xl text-primary py-1 px-3 font-dm-sans text-sm font-medium">
                 Meet KPA - Your Smart Personal Assistant
               </div>
               <GradientCardHeading
-                titleClass=" max-w-lg"
+                titleClass="max-w-lg"
                 data={{
                   title: "Handle Payments. Answer Questions. Get Things Done.",
                   desc: "KPA is your 24/7 smart assistant built into Klat-32, designed to simplify your financial life. Whether you're topping up airtime, paying bills, checking your balance, or fetching account statements, KPA handles it all with a quick message.",
                 }}
               />
-              <div className=" h-85 relative mt-10">
-                {/* Service Bubbles Container */}
+              <div className="h-85 relative mt-10">
                 <div className="relative w-full h-full">
                   <style jsx>{`
                     @keyframes fallAndFade {
@@ -161,27 +112,25 @@ export default function HandlePayments() {
                         opacity: 1;
                       }
                     }
-
                     .bubble-animate {
                       animation: fallAndFade 0.8s
                         cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
                     }
                   `}</style>
                   {services.map((service, index) => {
-                    // Define positions and rotations for slanted circular layout with better spacing
                     const bubbleStyles = [
-                      { top: "5%", left: "5%", transform: "rotate(-12deg)" }, // MTN Nigeria
-                      { top: "8%", right: "5%", transform: "rotate(8deg)" }, // Glo Mobile
-                      { top: "25%", left: "2%", transform: "rotate(-5deg)" }, // Airtel Nigeria
-                      { top: "28%", right: "2%", transform: "rotate(15deg)" }, // 9mobile
-                      { top: "45%", left: "8%", transform: "rotate(-8deg)" }, // DSTV
-                      { top: "48%", right: "8%", transform: "rotate(12deg)" }, // GOTV
-                      { top: "65%", left: "5%", transform: "rotate(-15deg)" }, // Startimes
-                      { top: "68%", right: "5%", transform: "rotate(6deg)" }, // PHED
-                      { top: "85%", left: "15%", transform: "rotate(-10deg)" }, // Ikeja Electric
-                      { top: "88%", right: "15%", transform: "rotate(10deg)" }, // Eko Electric
-                      { top: "15%", left: "35%", transform: "rotate(3deg)" }, // Abuja Electric
-                      { top: "65%", left: "40%", transform: "rotate(-7deg)" }, // Kaduna Electric
+                      { top: "5%", left: "5%", transform: "rotate(-12deg)" },
+                      { top: "8%", right: "5%", transform: "rotate(8deg)" },
+                      { top: "25%", left: "2%", transform: "rotate(-5deg)" },
+                      { top: "28%", right: "2%", transform: "rotate(15deg)" },
+                      { top: "45%", left: "8%", transform: "rotate(-8deg)" },
+                      { top: "48%", right: "8%", transform: "rotate(12deg)" },
+                      { top: "65%", left: "5%", transform: "rotate(-15deg)" },
+                      { top: "68%", right: "5%", transform: "rotate(6deg)" },
+                      { top: "85%", left: "15%", transform: "rotate(-10deg)" },
+                      { top: "88%", right: "15%", transform: "rotate(10deg)" },
+                      { top: "15%", left: "35%", transform: "rotate(3deg)" },
+                      { top: "65%", left: "40%", transform: "rotate(-7deg)" },
                     ];
 
                     const style = bubbleStyles[index] || {
@@ -189,7 +138,7 @@ export default function HandlePayments() {
                       left: "50%",
                       transform: "rotate(0deg)",
                     };
-                    const animationDelay = index * 0.1; // Stagger the animations
+                    const animationDelay = index * 0.1;
 
                     return (
                       <div
