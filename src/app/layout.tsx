@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { geistSans, geistMono, goodlyFont, inter, dmSans } from "../utils/font";
-import ClientHeader from "@/components/ClientHeader";
 import "./globals.css";
 import Header from "@/components/Header";
 import { CartProvider } from "@/contexts/CartContext";
@@ -27,7 +26,6 @@ export default function RootLayout({
           {/* header */}
 
           <Header />
-          {/* <ClientHeader /> */}
           {children}
 
           {/* newsletter */}

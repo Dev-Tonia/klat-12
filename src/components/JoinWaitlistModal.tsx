@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
+import Toast from "./Toast";
 
 interface JoinWaitlistModalProps {
   isOpen: boolean;
@@ -19,9 +20,12 @@ const countries = [
 
 // Regular expressions for validation
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const PHONE_REGEX = /^[0-9]{7,15}$/; // 7-15 digits for international phone numbers
+const PHONE_REGEX = /^[0-9]{7,15}$/;
 
-export default function JoinWaitlistModal({ isOpen, onClose }: JoinWaitlistModalProps) {
+export default function JoinWaitlistModal({
+  isOpen,
+  onClose,
+}: JoinWaitlistModalProps) {
   const [formData, setFormData] = useState({
     fullName: "",
     countryCode: "+234",
@@ -29,58 +33,78 @@ export default function JoinWaitlistModal({ isOpen, onClose }: JoinWaitlistModal
     email: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState({
-    phoneNumber: "",
-    email: "",
-  });
+  const [errors, setErrors] = useState({ phoneNumber: "", email: "" });
 
-  const validateEmail = (email: string): boolean => {
-    return EMAIL_REGEX.test(email);
-  };
+  // ✅ Toast state
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
 
-  const validatePhoneNumber = (phone: string): boolean => {
-    return PHONE_REGEX.test(phone);
-  };
+  const validateEmail = (email: string) => EMAIL_REGEX.test(email);
+  const validatePhoneNumber = (phone: string) => PHONE_REGEX.test(phone);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Reset errors
     setErrors({ phoneNumber: "", email: "" });
-    
-    // Validate email
+
     if (!validateEmail(formData.email)) {
-      setErrors(prev => ({ ...prev, email: "Please enter a valid email address" }));
+      setErrors((prev) => ({ ...prev, email: "Please enter a valid email" }));
       return;
     }
-    
-    // Validate phone number
     if (!validatePhoneNumber(formData.phoneNumber)) {
-      setErrors(prev => ({ ...prev, phoneNumber: "Please enter a valid phone number (7-15 digits)" }));
+      setErrors((prev) => ({
+        ...prev,
+        phoneNumber: "Please enter a valid phone number (7–15 digits)",
+      }));
       return;
     }
-    
+
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Reset form and close modal
-    setFormData({ fullName: "", countryCode: "+234", phoneNumber: "", email: "" });
-    setIsSubmitting(false);
-    onClose();
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.fullName || null,
+          phoneNumber: formData.phoneNumber || null,
+          email: formData.email,
+          type: "wait-list",
+        }),
+      });
+
+      const json = await res.json();
+      if (!res.ok) throw new Error(json?.error || "Something went wrong");
+
+      setToast({
+        message: "🎉 You’ve successfully joined the waitlist!",
+        type: "success",
+      });
+
+      setFormData({
+        fullName: "",
+        countryCode: "+234",
+        phoneNumber: "",
+        email: "",
+      });
+      onClose();
+    } catch (error: any) {
+      setToast({
+        message: error.message || "Failed to join waitlist",
+        type: "error",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    
-    // Clear errors when user starts typing
-    if (field === 'email' && errors.email) {
-      setErrors(prev => ({ ...prev, email: "" }));
-    }
-    if (field === 'phoneNumber' && errors.phoneNumber) {
-      setErrors(prev => ({ ...prev, phoneNumber: "" }));
-    }
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (field === "email" && errors.email)
+      setErrors((prev) => ({ ...prev, email: "" }));
+    if (field === "phoneNumber" && errors.phoneNumber)
+      setErrors((prev) => ({ ...prev, phoneNumber: "" }));
   };
 
   if (!isOpen) return null;
@@ -88,59 +112,32 @@ export default function JoinWaitlistModal({ isOpen, onClose }: JoinWaitlistModal
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      
+
       {/* Modal */}
       <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
-        {/* Header with gradient background and clouds */}
-        <div className="relative bg-gradient-to-b from-[#779BC1] via-[#9ABFDA] to-[#CBDFEC] px-8 py-12 text-center overflow-hidden">
-          {/* Close button */}
+        {/* Header */}
+        <div className="relative bg-gradient-to-b from-[#779BC1] via-[#9ABFDA] to-[#CBDFEC] px-8 py-12 text-center">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+            className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/20 hover:bg-white/30"
           >
             <X className="w-5 h-5 text-white" />
           </button>
 
-          {/* Cloud Background */}
-          <div className="absolute inset-0 z-0">
-            {[
-              { top: "10%", left: "10%", size: "w-16 h-10" },
-              { top: "20%", right: "15%", size: "w-12 h-8" },
-              { top: "60%", left: "5%", size: "w-14 h-9" },
-              { top: "70%", right: "10%", size: "w-10 h-6" },
-            ].map((pos, i) => (
-              <Image
-                key={i}
-                src="/imgs/cloud.png"
-                alt="cloud"
-                width={60}
-                height={40}
-                className={`absolute animate-cloud ${pos.size}`}
-                style={{
-                  top: pos.top,
-                  left: pos.left,
-                  right: pos.right,
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Logo */}
           <div className="relative z-10 mb-6">
             <Image
               src="/imgs/brand-logo.png"
-              alt="Klat-32 Logo"
+              alt="Logo"
               width={60}
               height={60}
               className="mx-auto"
             />
           </div>
 
-          {/* Title */}
           <h2 className="relative z-10 text-3xl font-semibold text-white font-goodly tracking-tight">
             JOIN THE
           </h2>
@@ -154,100 +151,95 @@ export default function JoinWaitlistModal({ isOpen, onClose }: JoinWaitlistModal
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Full Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2 font-dm-sans">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Full Name
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <div className="w-5 h-5 text-gray-400">
-                    👤
-                  </div>
-                </div>
-                <input
-                  type="text"
-                  required
-                  value={formData.fullName}
-                  onChange={(e) => handleInputChange('fullName', e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#779BC1] focus:border-transparent outline-none font-dm-sans"
-                  placeholder="Enter your full name"
-                />
-              </div>
+              <input
+                type="text"
+                value={formData.fullName}
+                onChange={(e) => handleInputChange("fullName", e.target.value)}
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#779BC1]"
+                placeholder="Enter your full name"
+              />
             </div>
 
             {/* Phone Number */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2 font-dm-sans">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Phone Number
               </label>
               <div className="flex gap-2">
-                {/* Country Dropdown */}
                 <select
                   value={formData.countryCode}
-                  onChange={(e) => handleInputChange('countryCode', e.target.value)}
-                  className="px-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#779BC1] focus:border-transparent outline-none font-dm-sans bg-white"
+                  onChange={(e) =>
+                    handleInputChange("countryCode", e.target.value)
+                  }
+                  className="px-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#779BC1] bg-white"
                 >
-                  {countries.map((country) => (
-                    <option key={country.code} value={country.code}>
-                      {country.flag} {country.code}
+                  {countries.map((c) => (
+                    <option key={c.code} value={c.code}>
+                      {c.flag} {c.code}
                     </option>
                   ))}
                 </select>
-                
-                {/* Phone Input */}
                 <input
                   type="tel"
-                  required
                   value={formData.phoneNumber}
-                  onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
-                  className={`flex-1 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#779BC1] focus:border-transparent outline-none font-dm-sans ${
-                    errors.phoneNumber ? 'border-red-500' : 'border-gray-200'
+                  onChange={(e) =>
+                    handleInputChange("phoneNumber", e.target.value)
+                  }
+                  className={`flex-1 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#779BC1] ${
+                    errors.phoneNumber ? "border-red-500" : "border-gray-200"
                   }`}
                   placeholder="Mobile number"
                 />
               </div>
               {errors.phoneNumber && (
-                <p className="mt-1 text-sm text-red-600 font-dm-sans">{errors.phoneNumber}</p>
+                <p className="mt-1 text-sm text-red-600">
+                  {errors.phoneNumber}
+                </p>
               )}
             </div>
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2 font-dm-sans">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Email
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <div className="w-5 h-5 text-gray-400">
-                    ✉️
-                  </div>
-                </div>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
-                  className={`w-full pl-10 pr-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#779BC1] focus:border-transparent outline-none font-dm-sans ${
-                    errors.email ? 'border-red-500' : 'border-gray-200'
-                  }`}
-                  placeholder="Enter your email"
-                />
-              </div>
+              <input
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#779BC1] ${
+                  errors.email ? "border-red-500" : "border-gray-200"
+                }`}
+                placeholder="Enter your email"
+              />
               {errors.email && (
-                <p className="mt-1 text-sm text-red-600 font-dm-sans">{errors.email}</p>
+                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
               )}
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#779BC1] hover:bg-[#6B8BB3] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-4 px-6 rounded-2xl transition-colors font-dm-sans"
+              className="w-full bg-[#779BC1] hover:bg-[#6B8BB3] disabled:opacity-50 text-white font-semibold py-4 px-6 rounded-2xl"
             >
               {isSubmitting ? "Joining..." : "Sign in"}
             </button>
           </form>
         </div>
       </div>
+
+      {/* ✅ Toast */}
+      {toast && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast(null)}
+        />
+      )}
     </div>
   );
 }
