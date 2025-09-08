@@ -236,8 +236,11 @@ export default function JoinWaitlistModal({
           message={toast.message}
           type={toast.type}
           onClose={() => {
-            setToast(null); // remove toast
-            onClose(); // close modal AFTER toast closes
+            setToast(null);
+
+            if (toast.type === "success") {
+              onClose();
+            }
           }}
         />
       )}

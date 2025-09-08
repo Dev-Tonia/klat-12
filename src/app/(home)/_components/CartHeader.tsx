@@ -65,6 +65,7 @@ export default function CartHeader() {
                 image: item?.image,
                 status: "In Stock",
               }}
+              key={item.name}
             >
               <div className=" flex justify-end items-center gap-4 mt-5">
                 <button className=" border border-primary text-primary rounded-full px-4 py-2 flex items-center gap-2 ">

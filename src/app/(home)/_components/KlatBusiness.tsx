@@ -4,7 +4,6 @@ import GradientCard from "./GradientCard";
 import Image from "next/image";
 import GradientCardHeading from "./GradientCardHeading";
 import MobileFrame from "./MobileFrame";
-import ProductCard from "./ProductCard";
 import MarketplaceHeader from "./MarketplaceHeader";
 import CartHeader from "./CartHeader";
 import { useCart } from "@/contexts/CartContext";
