@@ -69,8 +69,8 @@ export default function HandlePayments() {
     <section className="py-25 px-[clamp(0.5rem,5vw,112px)] md:px-[clamp(1rem,5vw,112px)] hidden md:block">
       <section ref={sectionRef} className="py-25 px-[clamp(1rem,5vw,112px)]">
         <GradientCard className="bg-[linear-gradient(179.54deg,#CBDFEC_-3.44%,#9ABFDA_45.36%,#779BC1_89.47%)]">
-          <div className="flex gap-20 py-10 px-9 items-center">
-            <div className="relative w-4/12">
+          <div className="flex min-[900px]:flex-row flex-col-reverse gap-10 2xl:gap-20 py-10 px-9 items-center">
+            <div className="relative min-[900px]:w-5/12 2xl:w-4/12">
               <Image
                 src="/imgs/app.png"
                 alt="phone"
@@ -79,7 +79,7 @@ export default function HandlePayments() {
                 className="border-[10px] border-primary rounded-[2.5rem] w-fit object-contain"
               />
             </div>
-            <div className="w-8/12">
+            <div className=" min-[900px]:w-7/12 2xl:w-8/12">
               <div className="size-14 bg-primary rounded-full flex justify-center items-center">
                 <Image
                   src="/imgs/roboto.gif"

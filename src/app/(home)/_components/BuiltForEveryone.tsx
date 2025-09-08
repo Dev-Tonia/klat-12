@@ -9,7 +9,7 @@ import GradientCard from "./GradientCard";
 export default function BuiltForEveryone() {
   return (
     <section className=" bg-white    px-[clamp(0.5rem,5vw,112px)]  md:px-[clamp(1rem,5vw,112px)] sm:pt-10 pt-8 md:pt-13 lg:pt-15.5  ">
-      <div className=" px-10">
+      <div className=" lg:px-10">
         {/* header */}
         <SectionHeader
           className=" max-w-[700px]"

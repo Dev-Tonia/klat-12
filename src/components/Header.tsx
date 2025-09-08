@@ -10,7 +10,10 @@ import JoinWaitlistModal from "./JoinWaitlistModal";
 export default function Header() {
   const [isNavBarOpen, setIsNavBarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [toast, setToast] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
   const handleJoinWaitlist = () => {
     setIsModalOpen(true);
   };

@@ -54,7 +54,7 @@ export default function ProductCard({
           />
         </div>
         {/* product details */}
-        <div className=" space-y-2.5  flex-1">
+        <div className=" space-y-2.5 text-[9px] lg:text-xs flex-1">
           <div className=" space-y-2.5">
             <div className=" flex items-start gap-2 justify-between">
               <div className="font-dm-sans tracking-tighter leading-5.5">
@@ -62,7 +62,7 @@ export default function ProductCard({
               </div>
               <span
                 className={clsx(
-                  " px-2 py-0.5 text-nowrap font-inter rounded-full text-xs font-medium  tracking-tighter ",
+                  " px-2 py-0.5 text-nowrap font-inter rounded-full  font-medium  tracking-tighter ",
                   product.status === "In Stock"
                     ? "bg-green-100 text-green-700"
                     : "bg-red-100 text-red-700  "
@@ -71,7 +71,7 @@ export default function ProductCard({
                 {product.status}
               </span>
             </div>
-            <div className=" text-xs text-gray-400 font-dm-sans ">
+            <div className="  text-gray-400 font-dm-sans ">
               {product.description}
             </div>
             {/* </div> */}
@@ -82,7 +82,7 @@ export default function ProductCard({
           {children ? (
             children
           ) : (
-            <div className="flex gap-3 mt-4">
+            <div className="flex  xl:flex-row flex-col  gap-3 mt-4">
               <button
                 className="flex-1 border border-gray-300 text-sm leading-3 rounded-full cursor-not-allowed py-2 font-dm-sans text-primary bg-white"
                 disabled
@@ -91,7 +91,7 @@ export default function ProductCard({
               </button>
               <button
                 className={clsx(
-                  "flex-1 flex items-center text-xs justify-center px-2 gap-2 rounded-full py-2 font-dm-sans font-medium transition",
+                  "flex-1 flex items-center  justify-center px-2 gap-2 rounded-full py-2 font-dm-sans font-medium transition",
                   product.status === "In Stock"
                     ? isInCart
                       ? "bg-green-600 text-white hover:bg-green-700"

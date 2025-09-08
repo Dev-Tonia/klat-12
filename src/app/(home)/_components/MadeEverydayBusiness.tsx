@@ -10,7 +10,7 @@ import WalletHeader from "./WalletHeader";
 export default function MadeEverydayBusiness() {
   return (
     <section className=" bg-white    px-[clamp(0.5rem,5vw,112px)]  md:px-[clamp(1rem,5vw,112px)] pt-15.5 ">
-      <div className=" px-10">
+      <div className=" lg:px-10">
         {/* header */}
         <SectionHeader
           title="Made for Everyday and Business Use"

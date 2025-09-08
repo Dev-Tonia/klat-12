@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Image from "next/image";
 export default function MobileFrame({
   children,
-  cardHeight = "h-85",
+  cardHeight = " h-65 md:h-85",
   cardWidth = " max-w-100",
 }: {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ export default function MobileFrame({
   return (
     <div
       className={clsx(
-        " w-full border-[10px] border-b-0 relative bg-white border-white rounded-t-[2.5rem] overflow-hidden",
+        " w-full border-[10px] border-b-0 relative bg-white border-white rounded-t-[2.5rem]  overflow-hidden",
         cardHeight,
         cardWidth
       )}

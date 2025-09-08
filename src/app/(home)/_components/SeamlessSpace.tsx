@@ -4,8 +4,8 @@ import Image from "next/image";
 import CardStack from "./StackedCards";
 export default function SeamlessSpace() {
   return (
-    <section className=" bg-white    px-[clamp(0.5rem,5vw,112px)]  md:px-[clamp(1rem,5vw,112px)] pt-15.5 ">
-      <div className=" px-10">
+    <section className=" bg-white    px-[clamp(0.5rem,5vw,112px)]  md:px-[clamp(1rem,5vw,112px)] pt-10 md:pt-15.5 ">
+      <div className=" lg:px-10">
         {/* header */}
         <SectionHeader
           title="Everything in One Seamless Space"

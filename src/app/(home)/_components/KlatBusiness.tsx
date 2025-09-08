@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import GradientCard from "./GradientCard";
 import Image from "next/image";
@@ -5,13 +6,9 @@ import GradientCardHeading from "./GradientCardHeading";
 import MobileFrame from "./MobileFrame";
 import ProductCard from "./ProductCard";
 import MarketplaceHeader from "./MarketplaceHeader";
-interface Product {
-  name: string;
-  description: string;
-  price: string;
-  image: string;
-  status: "In Stock" | "Out Stock";
-}
+import CartHeader from "./CartHeader";
+import { useCart } from "@/contexts/CartContext";
+
 const items = [
   "Receive Payments from Customers Instantly",
   "Daily Business Account Access",
@@ -20,42 +17,14 @@ const items = [
   "API & Business Integrations – Tailored for growth",
   "Manage Customers, Vendors, and Team Communication",
 ];
-const products: Product[] = [
-  {
-    name: "Wireless Bluetooth Earbuds",
-    description: "High-quality wireless earbuds with noise cancellation.",
-    price: "₦15,000",
-    image: "/imgs/earbud.png",
-    status: "In Stock",
-  },
-  {
-    name: "Bluetooth Speaker",
-    description: "A portable Bluetooth speaker with deep bass.",
-    price: "₦12,000",
-    image: "/imgs/speaker.png",
-    status: "Out Stock",
-  },
-  {
-    name: "USB-C Cable",
-    description: "Fast charging USB-C cable.",
-    price: "₦3,000",
-    image: "/imgs/usb-cable.png",
-    status: "In Stock",
-  },
-  {
-    name: "Smartphone Stand",
-    description: "Adjustable stand for smartphones and tablets.",
-    price: "₦5,000",
-    image: "/imgs/phone-stand.png",
-    status: "In Stock",
-  },
-];
+
 export default function KlatBusiness() {
+  const { openCart } = useCart();
   return (
-    <section className=" py-25    px-[clamp(0.5rem,5vw,112px)]  md:px-[clamp(1rem,5vw,112px)] hidden md:block">
+    <section className=" py-10 md:py-15 lg:py-20    px-[clamp(0.5rem,5vw,112px)]  md:px-[clamp(1rem,5vw,112px)] ">
       <GradientCard className=" bg-[linear-gradient(179.54deg,#CBDFEC_-3.44%,#9ABFDA_45.36%,#779BC1_89.47%)]">
-        <div className=" flex gap-20 pt-10 px-9 items-center ">
-          <div className=" pb-10 w-8/12">
+        <div className=" flex md:flex-row flex-col gap-10 2xl:gap-20 pt-10 2xl:px-9 items-center md:items-end ">
+          <div className=" pb-10 md:w-7/12 2xl:w-8/12">
             <div className=" size-15 bg-gray-50 rounded-full flex justify-center items-center ">
               <div className=" relative size-8.5">
                 <Image fill src="/icon/shop.svg" alt="app store" />
@@ -82,14 +51,9 @@ export default function KlatBusiness() {
               ))}
             </ul>
           </div>
-          <div className=" w-4/12 shrink-0 ">
+          <div className=" md:w-5/12 2xl:w-4/12 shrink-0 ">
             <MobileFrame cardHeight="h-160 overflow-y-auto hide-scrollbar">
-              <MarketplaceHeader />
-              <div className=" space-y-3">
-                {products.map((product) => (
-                  <ProductCard key={product.name} product={product} />
-                ))}
-              </div>
+              {openCart ? <CartHeader /> : <MarketplaceHeader />}
             </MobileFrame>
           </div>
         </div>

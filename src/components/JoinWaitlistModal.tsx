@@ -86,7 +86,6 @@ export default function JoinWaitlistModal({
         phoneNumber: "",
         email: "",
       });
-      onClose();
     } catch (error: unknown) {
       let message = "Failed to join waitlist";
       if (error instanceof Error) {
@@ -236,7 +235,10 @@ export default function JoinWaitlistModal({
         <Toast
           message={toast.message}
           type={toast.type}
-          onClose={() => setToast(null)}
+          onClose={() => {
+            setToast(null); // remove toast
+            onClose(); // close modal AFTER toast closes
+          }}
         />
       )}
     </div>
